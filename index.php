@@ -5,20 +5,17 @@ $password = [];
 
 if(isset($_GET["psw"]) && $_GET["psw"] !== ""){
     $psw_length = $_GET["psw"];
-    var_dump($psw_length);
 
     $random_index = [];
     while (count($random_index) < $psw_length){
-        $cur_index = rand(0, count($characters));
+        $cur_index = rand(0, count($characters) - 1);
         $random_index [] = $cur_index;
     };
-    var_dump($random_index);
-    
+   
     foreach($random_index as $i){
         $password [] = $characters[$i];
     
     };
-    var_dump($password);
 
 };
 
@@ -43,13 +40,13 @@ Scriviamo tutto (logica e layout) in un unico file *index.php* -->
 
 <form action="index.php" method="GET">
     <label for="psw">Lunghezza Password</label>
-    <input type="number" id="psw" name="psw" max="20" min="6">
+    <input type="number" id="psw" name="psw" max="30" min="5">
     <button type="submit" class="btn btn-primary">Invia</button>
     <button type="reset" class="btn btn-primary">Cancella</button>
 </form>
 
 <div class="password">
-    <?php foreach ($password as $character)
+    Password Generated: <?php foreach ($password as $character)
     echo $character
     ?>
 </div>
