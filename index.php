@@ -3,6 +3,11 @@
 $characters =["a","b","c","d","e","f","g","h","i","l","m","n","o","p","q","r","s","t","u","v","z","x","y","j","k","1","2","3","4","5","6","7","8","9","0","!","?","@","*","#","=","A","B","C","D","E","F","G","H","I","L","M","N","O","P","Q","R","S","T","U","V","Z","X","Y","J","K"];
 $password = [];
 
+$letters = ["a","b","c","d","e","f","g","h","i","l","m","n","o","p","q","r","s","t","u","v","z","x","y","j","k","A","B","C","D","E","F","G","H","I","L","M","N","O","P","Q","R","S","T","U","V","Z","X","Y","J","K"];
+$symbols = ["!","?","@","*","#","="];
+$numbers = ["1","2","3","4","5","6","7","8","9","0"];
+$choosen_characthers = [];
+
 if(isset($_GET["psw"]) && $_GET["psw"] !== ""){
     $psw_length = $_GET["psw"];
 
@@ -18,9 +23,6 @@ if(isset($_GET["psw"]) && $_GET["psw"] !== ""){
     };
 
 };
-
-
-
 ?>
 
 
@@ -34,19 +36,27 @@ if(isset($_GET["psw"]) && $_GET["psw"] !== ""){
     <title>Document</title>
 </head>
 <body>
-<!-- **Milestone 1**
-Creare un form che invii in GET la lunghezza della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente.
-Scriviamo tutto (logica e layout) in un unico file *index.php* -->
 
-<form action="index.php" method="GET">
+<form class="container" action="index.php" method="GET">
     <label for="psw">Lunghezza Password</label>
     <input type="number" id="psw" name="psw" max="30" min="5">
+    <div class="my-5">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btncheck1">Lettere</label>
+        
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btncheck2">Simboli</label>
+      
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btncheck3">Numeri</label>
+    </div>
+
     <button type="submit" class="btn btn-primary">Invia</button>
     <button type="reset" class="btn btn-primary">Cancella</button>
 </form>
 
-<div class="password">
-    Password Generated: <?php foreach ($password as $character)
+<div class="password container">
+    Password: <?php foreach ($password as $character)
     echo $character
     ?>
 </div>
