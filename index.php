@@ -1,5 +1,13 @@
 <?php
+session_start();
 include __DIR__ . '/functions.php';
+
+foreach ($password as $character){
+    echo $character;
+    $_SESSION['my_password'] = $character;
+};
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +23,7 @@ include __DIR__ . '/functions.php';
 
 <form class="container" action="index.php" method="GET">
     <label for="psw">Lunghezza Password</label>
-    <input type="number" id="psw" name="psw" max="30" min="5">
+    <input type="number" id="psw" name="psw" max="30" min="10">
     <div class="my-5">
         <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
         <label class="btn btn-outline-primary" for="btncheck1">Lettere</label>
@@ -27,15 +35,10 @@ include __DIR__ . '/functions.php';
         <label class="btn btn-outline-primary" for="btncheck3">Numeri</label>
     </div>
 
-    <button type="submit" class="btn btn-primary">Invia</button>
+    <button type="submit" class="btn btn-primary"> Invia</button>
     <button type="reset" class="btn btn-primary">Cancella</button>
 </form>
 
-<div class="password container">
-    Password: <?php foreach ($password as $character)
-    echo $character
-    ?>
-</div>
 
 
     
